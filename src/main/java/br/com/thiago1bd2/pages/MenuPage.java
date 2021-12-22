@@ -24,4 +24,9 @@ public class MenuPage extends BasePage {
 		return new ListarPage();
 	}
 
+	public MovimentacaoPage adicionarMovimentacao() {
+		clicarElemento(By.linkText("Criar Movimentação"));
+		return new MovimentacaoPage();
+	}
+
 }

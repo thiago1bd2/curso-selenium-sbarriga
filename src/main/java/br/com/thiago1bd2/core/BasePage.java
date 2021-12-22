@@ -84,7 +84,7 @@ public class BasePage {
 	}
 
 	public boolean isValorSelecionado(String id, String valor) {
-		List<String> options = obterValoresSelecionadosCombo(id);
+		List<String> options = obterValoresSelecionadoscombo(id);
 
 		for (String option : options) {
 			if (option.equals(valor)) {
@@ -104,19 +104,7 @@ public class BasePage {
 		return new Select(getDriver().findElement(By.id(id))).getOptions().size();
 	}
 
-	public List<String> obterValoresDisponiveisCombo(String id) {
-		List<String> opcoes = new ArrayList<String>();
-		Select options = new Select(getDriver().findElement(By.id(id)));
-
-		for (WebElement option : options.getOptions()) {
-			opcoes.add(option.getText());
-		}
-
-		return opcoes;
-
-	}
-
-	public List<String> obterValoresSelecionadosCombo(String id) {
+	public List<String> obterValoresSelecionadoscombo(String id) {
 		List<String> opcoes = new ArrayList<String>();
 		Select options = new Select(getDriver().findElement(By.id(id)));
 
@@ -126,6 +114,20 @@ public class BasePage {
 
 		return opcoes;
 
+	}
+	
+	public List<String> obterListaElementos(By by){
+		List<String> elementos = new ArrayList<String>();
+		
+		for (WebElement element : getDriver().findElements(by)) {
+			elementos.add(element.getText());
+		}
+		
+		return elementos;
+	}
+	
+	public List<String> obterListaElementos(String id){
+		return obterListaElementos(By.id(id));
 	}
 
 	public void mudarFocoJanela(String title) {
