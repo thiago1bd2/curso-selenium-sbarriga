@@ -163,13 +163,18 @@ public class BasePage {
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		return js.executeScript(cmd, objects);
 	}
-
-	public void clicarBotaoTabela(String coluna, String valor, String colunaBotao, String idTabela) {
+	
+	public WebElement obterCelula(String coluna, String valor, String colunaBotao, String idTabela) {
 		WebElement tabela = getDriver().findElement(By.xpath("//table[@id='" + idTabela + "']"));
 		int idColuna = indexOfColuna(coluna, tabela);
 		int idLinha = indexOfLinha(valor, tabela, idColuna);
-		int idColunaBotao = indexOfColuna(colunaBotao, tabela);
-		WebElement botao = tabela.findElement(By.xpath("./tbody/tr[" + idLinha + "]/td[" + idColunaBotao + "]/input"));
+		int idColunaBotao = indexOfColuna(colunaBotao, tabela);		
+		WebElement celula = tabela.findElement(By.xpath("./tbody/tr[" + idLinha + "]/td[" + idColunaBotao + "]"));
+		return celula;
+	}
+
+	public void clicarBotaoTabela(String coluna, String valor, String colunaBotao, String idTabela) {
+		WebElement botao = obterCelula(coluna, valor, colunaBotao, idTabela);
 		botao.click();
 	}
 

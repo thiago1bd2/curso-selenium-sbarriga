@@ -5,34 +5,23 @@ import org.openqa.selenium.By;
 import br.com.thiago1bd2.core.BasePage;
 
 public class MenuPage extends BasePage {
-	
+
 	public void acessarHome() {
-		
+
 	}
-	
-	public void adicionarConta() {
-//		clicarElemento(By.xpath("//a/span"));
-//		clicarElemento(By.xpath("//li/a[.='Adicionar']"));
-		
+
+	public ContasPage adicionarConta() {
+
 		clicarElemento(By.linkText("Contas"));
 		clicarElemento(By.linkText("Adicionar"));
+
+		return new ContasPage();
 	}
-	
-	public void listarConta() {
+
+	public ListarPage listarConta() {
 		clicarElemento(By.linkText("Contas"));
 		clicarElemento(By.linkText("Listar"));
-	}
-	
-	public void criarMovimentacao() {
-		
-	}
-	
-	public void movimentacaoMensal() {
-		
-	}
-	
-	public void sair() {
-		
+		return new ListarPage();
 	}
 
 }
