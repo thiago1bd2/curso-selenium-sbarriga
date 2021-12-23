@@ -2,19 +2,23 @@ package br.com.thiago1bd2.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import br.com.thiago1bd2.core.BaseTest;
 import br.com.thiago1bd2.pages.ContasPage;
 import br.com.thiago1bd2.pages.ListarPage;
 import br.com.thiago1bd2.pages.MenuPage;
 
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ContaTest extends BaseTest {
 
 	MenuPage menuPage = new MenuPage();
 
 	@Test
-	public void adicionarConta() {
+	public void test1_adicionarConta() {
 		ContasPage contasPage = menuPage.adicionarConta();
 
 		contasPage.setNome("Conta do Teste");
@@ -24,7 +28,7 @@ public class ContaTest extends BaseTest {
 	}
 
 	@Test
-	public void editarConta() {
+	public void test2_editarConta() {
 		ListarPage listarPage = menuPage.listarConta();
 
 		ContasPage contasPage = listarPage.editarConta("Conta 1");
@@ -35,21 +39,15 @@ public class ContaTest extends BaseTest {
 	}
 
 	@Test
-	public void adicionarContaJaExistente() {
+	public void test3_adicionarContaJaExistente() {
 		ContasPage contasPage = menuPage.adicionarConta();
 
-		contasPage.setNome("Conta 2");
+		contasPage.setNome("Conta do Teste Alterada");
 		contasPage.salvarConta();
 
 		assertEquals("Já existe uma conta com esse nome!", contasPage.obterMensagemErro());
 	}
 
-	@Test
-	public void excluirContaComMovimentacao() {
-		ListarPage lPage = menuPage.listarConta();
-		lPage.removerConta("Conta Movimentação");
-
-		assertEquals("Conta em uso na movimentações", lPage.obterMensagemErro());
-	}
+	
 
 }

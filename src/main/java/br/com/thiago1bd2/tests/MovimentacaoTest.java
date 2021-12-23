@@ -8,19 +8,21 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import br.com.thiago1bd2.core.BaseTest;
 import br.com.thiago1bd2.pages.MenuPage;
 import br.com.thiago1bd2.pages.MovimentacaoPage;
-import br.com.thiago1bd2.utils.DataUtils;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MovimentacaoTest extends BaseTest {
 
 	MenuPage menuPage = new MenuPage();
 
 	@Test
-	public void adicionarNovaMovimentacao() {
+	public void test1_adicionarNovaMovimentacao() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
 		movimentacaoPage.setMovimentacao("Despesa");
 		movimentacaoPage.setDataMovimentacao(getDataFormatada(getDataDiferencaEmDias(0)));
@@ -28,13 +30,13 @@ public class MovimentacaoTest extends BaseTest {
 		movimentacaoPage.setDescricao("Movimentação "+getDataHora());
 		movimentacaoPage.setInteressado("Selenium Teste");
 		movimentacaoPage.setValor("100");
-		movimentacaoPage.setConta("Conta Movimentação");
+		movimentacaoPage.setConta("Conta do Teste Alterada");
 		movimentacaoPage.setSituacaoPago();
 		movimentacaoPage.salvar();
 	}
 
 	@Test
-	public void validarCamposObrigatorios() {
+	public void test2_validarCamposObrigatorios() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
 		movimentacaoPage.salvar();
 		List<String> erros = movimentacaoPage.obterErros();
@@ -45,7 +47,7 @@ public class MovimentacaoTest extends BaseTest {
 	}
 	
 	@Test
-	public void validaErroSeMovimentacaoFutura() {
+	public void test3_validaErroSeMovimentacaoFutura() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
 		
 		movimentacaoPage.setDataMovimentacao(getDataFormatada(getDataDiferencaEmDias(1)));
