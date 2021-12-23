@@ -26,22 +26,30 @@ public class ContaTest extends BaseTest {
 	@Test
 	public void editarConta() {
 		ListarPage listarPage = menuPage.listarConta();
-		
+
 		ContasPage contasPage = listarPage.editarConta("Conta 1");
 		contasPage.setNome("Conta do Teste Alterada");
 		contasPage.salvarConta();
-		
+
 		assertEquals("Conta alterada com sucesso!", contasPage.obterMensagemSucesso());
 	}
-	
+
 	@Test
 	public void adicionarContaJaExistente() {
 		ContasPage contasPage = menuPage.adicionarConta();
-		
+
 		contasPage.setNome("Conta 2");
 		contasPage.salvarConta();
-		
+
 		assertEquals("Já existe uma conta com esse nome!", contasPage.obterMensagemErro());
+	}
+
+	@Test
+	public void excluirContaComMovimentacao() {
+		ListarPage lPage = menuPage.listarConta();
+		lPage.removerConta("Conta Movimentação");
+
+		assertEquals("Conta em uso na movimentações", lPage.obterMensagemErro());
 	}
 
 }

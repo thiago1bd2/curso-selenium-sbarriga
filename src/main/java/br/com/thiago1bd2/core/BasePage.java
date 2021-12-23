@@ -200,5 +200,9 @@ public class BasePage {
 		}
 		return -1;
 	}
+	
+	public String getPageTitle() {
+		return getDriver().getTitle();
+	}
 
 }

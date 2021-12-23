@@ -28,5 +28,10 @@ public class MenuPage extends BasePage {
 		clicarElemento(By.linkText("Criar Movimentação"));
 		return new MovimentacaoPage();
 	}
+	
+	public ResumoPage acessarResumos() {
+		clicarElemento(By.linkText("Resumo Mensal"));
+		return new ResumoPage();
+	}
 
 }

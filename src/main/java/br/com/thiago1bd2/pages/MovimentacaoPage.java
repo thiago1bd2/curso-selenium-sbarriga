@@ -1,13 +1,10 @@
 package br.com.thiago1bd2.pages;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import br.com.thiago1bd2.core.BasePage;
-import br.com.thiago1bd2.core.DriverFactory;
 
 public class MovimentacaoPage extends BasePage {
 

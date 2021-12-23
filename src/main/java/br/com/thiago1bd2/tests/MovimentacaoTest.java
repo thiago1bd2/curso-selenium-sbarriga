@@ -1,9 +1,10 @@
 package br.com.thiago1bd2.tests;
 
+import static br.com.thiago1bd2.utils.DataUtils.getDataDiferencaEmDias;
+import static br.com.thiago1bd2.utils.DataUtils.getDataFormatada;
+import static br.com.thiago1bd2.utils.DataUtils.getDataHora;
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.junit.Test;
 import br.com.thiago1bd2.core.BaseTest;
 import br.com.thiago1bd2.pages.MenuPage;
 import br.com.thiago1bd2.pages.MovimentacaoPage;
+import br.com.thiago1bd2.utils.DataUtils;
 
 public class MovimentacaoTest extends BaseTest {
 
@@ -21,9 +23,9 @@ public class MovimentacaoTest extends BaseTest {
 	public void adicionarNovaMovimentacao() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
 		movimentacaoPage.setMovimentacao("Despesa");
-		movimentacaoPage.setDataMovimentacao("01/12/2021");
-		movimentacaoPage.setDataPagamento("01/01/2022");
-		movimentacaoPage.setDescricao("Movimentação Teste 2");
+		movimentacaoPage.setDataMovimentacao(getDataFormatada(getDataDiferencaEmDias(0)));
+		movimentacaoPage.setDataPagamento(getDataFormatada(getDataDiferencaEmDias(30)));
+		movimentacaoPage.setDescricao("Movimentação "+getDataHora());
 		movimentacaoPage.setInteressado("Selenium Teste");
 		movimentacaoPage.setValor("100");
 		movimentacaoPage.setConta("Conta Movimentação");
@@ -46,9 +48,7 @@ public class MovimentacaoTest extends BaseTest {
 	public void validaErroSeMovimentacaoFutura() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
 		
-		LocalDate diaFuturo = LocalDate.now().plusDays(1);
-		DateTimeFormatter formatadorBarra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		movimentacaoPage.setDataMovimentacao(diaFuturo.format(formatadorBarra));
+		movimentacaoPage.setDataMovimentacao(getDataFormatada(getDataDiferencaEmDias(1)));
 		
 		movimentacaoPage.salvar();
 		

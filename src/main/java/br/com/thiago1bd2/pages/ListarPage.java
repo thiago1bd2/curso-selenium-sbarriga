@@ -12,5 +12,19 @@ public class ListarPage extends BasePage {
 			.click();
 		return new ContasPage();
 	}
+	
+	public void removerConta(String conta) {
+		obterCelula("Conta", conta, "Ações", "tabelaContas")
+		.findElement(By.xpath("./a/span[@class='glyphicon glyphicon-remove-circle']"))
+		.click();
+	}
+	
+	public String obterMensagemSucesso() {
+		return obterTextoElemento(By.xpath("//div[@class='alert alert-success']"));
+	}
+	
+	public String obterMensagemErro() {
+		return obterTextoElemento(By.xpath("//div[@class='alert alert-danger']"));
+	}
 
 }
