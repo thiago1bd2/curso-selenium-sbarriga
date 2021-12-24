@@ -12,8 +12,8 @@ public class SaldoTest extends BaseTest{
 	@Test
 	public void testSaldoDaConta() {
 		HomePage hPage = new HomePage();
-		String valor =  hPage.obterSaldoDaConta("Conta Movimentação");
+		String valor =  hPage.obterSaldoDaConta("Conta do Teste Alterada");
 		
-		assertEquals("-400.00", valor);
+		assertEquals("100.00", valor);
 	}
 }

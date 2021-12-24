@@ -31,7 +31,7 @@ public class ContaTest extends BaseTest {
 	public void test2_editarConta() {
 		ListarPage listarPage = menuPage.listarConta();
 
-		ContasPage contasPage = listarPage.editarConta("Conta 1");
+		ContasPage contasPage = listarPage.editarConta("Conta do Teste");
 		contasPage.setNome("Conta do Teste Alterada");
 		contasPage.salvarConta();
 
