@@ -14,6 +14,6 @@ public class SaldoTest extends BaseTest{
 		HomePage hPage = new HomePage();
 		String valor =  hPage.obterSaldoDaConta("Conta do Teste Alterada");
 		
-		assertEquals("100.00", valor);
+		assertEquals("-100.00", valor);
 	}
 }

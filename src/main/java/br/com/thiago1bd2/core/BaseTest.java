@@ -17,16 +17,16 @@ import org.openqa.selenium.TakesScreenshot;
 import br.com.thiago1bd2.pages.LoginPage;
 
 public class BaseTest {
-	
+
 	private final String email = "st@st.com";
 	private final String password = "123456";
 	protected LoginPage loginPage;
 
 	@Rule
 	public TestName testName = new TestName();
-	
+
 	@Before
-	public void init() {		
+	public void init() {
 		loginPage = new LoginPage();
 		loginPage.acessarTelaInicial();
 		loginPage.setEmail(email);
@@ -35,11 +35,11 @@ public class BaseTest {
 	}
 
 	@After
-	public void finalize() throws IOException {
-		TakesScreenshot ss = (TakesScreenshot) getDriver();
-		File file = ss.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(file, new File(
-				"target" + File.separator + "screenshot" + File.separator + testName.getMethodName() + ".jpg"));
+	public void finalize() throws IOException, InterruptedException {
+//		TakesScreenshot ss = (TakesScreenshot) getDriver();
+//		File file = ss.getScreenshotAs(OutputType.FILE);
+//		FileUtils.copyFile(file, new File(
+//				"target" + File.separator + "screenshot" + File.separator + testName.getMethodName() + ".jpg"));
 
 		if (Properties.CLOSE_BROWSER) {
 			killDriver();
