@@ -35,12 +35,12 @@ public class BaseTest {
 	}
 
 	@After
-	public void finalize() throws IOException, InterruptedException {
-//		TakesScreenshot ss = (TakesScreenshot) getDriver();
-//		File file = ss.getScreenshotAs(OutputType.FILE);
-//		FileUtils.copyFile(file, new File(
-//				"target" + File.separator + "screenshot" + File.separator + testName.getMethodName() + ".jpg"));
-
+	public void finalizar() throws IOException, InterruptedException {
+		TakesScreenshot ss = (TakesScreenshot) getDriver();
+		File file = ss.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file, new File(
+				"target" + File.separator + "screenshot" + File.separator + testName.getMethodName() + ".jpg"));
+		
 		if (Properties.CLOSE_BROWSER) {
 			killDriver();
 		}

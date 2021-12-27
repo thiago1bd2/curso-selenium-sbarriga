@@ -17,7 +17,7 @@ public class DriverFactory {
 	public static WebDriver getDriver() {
 		if (cOption == null) {
 			cOption = new ChromeOptions();
-			cOption.setLogLevel(ChromeDriverLogLevel.DEBUG);
+			cOption.setLogLevel(ChromeDriverLogLevel.OFF);
 		}
 
 		if (driver == null) {

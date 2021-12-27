@@ -22,7 +22,7 @@ public class MovimentacaoTest extends BaseTest {
 	MenuPage menuPage = new MenuPage();
 
 	@Test
-	public void test1_adicionarNovaMovimentacao() {
+	public void test1adicionarNovaMovimentacao() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
 		movimentacaoPage.setMovimentacao("Despesa");
 		movimentacaoPage.setDataMovimentacao(getDataFormatada(getDataDiferencaEmDias(0)));
@@ -36,7 +36,7 @@ public class MovimentacaoTest extends BaseTest {
 	}
 
 	@Test
-	public void test2_validarCamposObrigatorios() {
+	public void test2validarCamposObrigatorios() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
 		movimentacaoPage.salvar();
 		List<String> erros = movimentacaoPage.obterErros();
@@ -47,7 +47,7 @@ public class MovimentacaoTest extends BaseTest {
 	}
 	
 	@Test
-	public void test3_validaErroSeMovimentacaoFutura() {
+	public void test3validaErroSeMovimentacaoFutura() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
 		
 		movimentacaoPage.setDataMovimentacao(getDataFormatada(getDataDiferencaEmDias(1)));
