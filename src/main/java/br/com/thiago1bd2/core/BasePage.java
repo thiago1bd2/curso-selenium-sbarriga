@@ -13,10 +13,9 @@ import org.openqa.selenium.support.ui.Select;
 
 public class BasePage {
 
-
 	public BasePage() {
 	}
-	
+
 	public void escreverTexto(String id, String texto) {
 		escreverTexto(By.id(id), texto);
 	}
@@ -115,18 +114,18 @@ public class BasePage {
 		return opcoes;
 
 	}
-	
-	public List<String> obterListaElementos(By by){
+
+	public List<String> obterListaElementos(By by) {
 		List<String> elementos = new ArrayList<String>();
-		
+
 		for (WebElement element : getDriver().findElements(by)) {
 			elementos.add(element.getText());
 		}
-		
+
 		return elementos;
 	}
-	
-	public List<String> obterListaElementos(String id){
+
+	public List<String> obterListaElementos(String id) {
 		return obterListaElementos(By.id(id));
 	}
 
@@ -165,12 +164,12 @@ public class BasePage {
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		return js.executeScript(cmd, objects);
 	}
-	
+
 	public WebElement obterCelula(String coluna, String valor, String colunaBotao, String idTabela) {
 		WebElement tabela = getDriver().findElement(By.xpath("//table[@id='" + idTabela + "']"));
 		int idColuna = indexOfColuna(coluna, tabela);
 		int idLinha = indexOfLinha(valor, tabela, idColuna);
-		int idColunaBotao = indexOfColuna(colunaBotao, tabela);		
+		int idColunaBotao = indexOfColuna(colunaBotao, tabela);
 		WebElement celula = tabela.findElement(By.xpath("./tbody/tr[" + idLinha + "]/td[" + idColunaBotao + "]"));
 		return celula;
 	}
@@ -178,6 +177,15 @@ public class BasePage {
 	public void clicarBotaoTabela(String coluna, String valor, String colunaBotao, String idTabela) {
 		WebElement botao = obterCelula(coluna, valor, colunaBotao, idTabela);
 		botao.click();
+	}
+
+	public boolean tabelaPossuiElementos(By by) {
+		WebElement tabela = getDriver().findElement(by);
+		return tabela.findElements(By.xpath("./tbody//tr")).size() == 0;
+	}
+
+	public boolean tabelaPossuiElementos(String id) {
+		return tabelaPossuiElementos(By.id(id));
 	}
 
 	private int indexOfColuna(String nomeColuna, WebElement tabela) {
@@ -200,7 +208,7 @@ public class BasePage {
 		}
 		return -1;
 	}
-	
+
 	public String getPageTitle() {
 		return getDriver().getTitle();
 	}

@@ -6,10 +6,6 @@ import br.com.thiago1bd2.core.BasePage;
 
 public class MenuPage extends BasePage {
 
-	public void acessarHome() {
-
-	}
-
 	public ContasPage adicionarConta() {
 
 		clicarElemento(By.linkText("Contas"));
@@ -28,10 +24,15 @@ public class MenuPage extends BasePage {
 		clicarElemento(By.linkText("Criar Movimentação"));
 		return new MovimentacaoPage();
 	}
-	
+
 	public ResumoPage acessarResumos() {
 		clicarElemento(By.linkText("Resumo Mensal"));
 		return new ResumoPage();
+	}
+
+	public HomePage acessarHome() {
+		clicarElemento(By.linkText("Home"));
+		return new HomePage();
 	}
 
 }

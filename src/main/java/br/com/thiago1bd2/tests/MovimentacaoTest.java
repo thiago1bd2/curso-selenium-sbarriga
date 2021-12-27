@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.thiago1bd2.core.BaseTest;
+import br.com.thiago1bd2.core.Properties;
 import br.com.thiago1bd2.pages.MenuPage;
 import br.com.thiago1bd2.pages.MovimentacaoPage;
 
@@ -24,13 +25,13 @@ public class MovimentacaoTest extends BaseTest {
 	@Test
 	public void test1adicionarNovaMovimentacao() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
-		movimentacaoPage.setMovimentacao("Despesa");
+		movimentacaoPage.setMovimentacaoReceita();
 		movimentacaoPage.setDataMovimentacao(getDataFormatada(getDataDiferencaEmDias(0)));
 		movimentacaoPage.setDataPagamento(getDataFormatada(getDataDiferencaEmDias(30)));
 		movimentacaoPage.setDescricao("Movimentação "+getDataHora());
 		movimentacaoPage.setInteressado("Selenium Teste");
-		movimentacaoPage.setValor("100");
-		movimentacaoPage.setConta("Conta do Teste Alterada");
+		movimentacaoPage.setValor(Properties.VALOR_MOVIMENTACAO);
+		movimentacaoPage.setConta(Properties.NOME_DA_CONTA_ALTERADA);
 		movimentacaoPage.setSituacaoPago();
 		movimentacaoPage.salvar();
 	}

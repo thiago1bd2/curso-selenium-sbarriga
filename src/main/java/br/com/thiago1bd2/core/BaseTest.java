@@ -18,12 +18,12 @@ import br.com.thiago1bd2.pages.LoginPage;
 
 public class BaseTest {
 
+	@Rule
+	public TestName testName = new TestName();
+
 	private final String email = "st@st.com";
 	private final String password = "123456";
 	protected LoginPage loginPage;
-
-	@Rule
-	public TestName testName = new TestName();
 
 	@Before
 	public void init() {
@@ -40,7 +40,7 @@ public class BaseTest {
 		File file = ss.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File(
 				"target" + File.separator + "screenshot" + File.separator + testName.getMethodName() + ".jpg"));
-		
+
 		if (Properties.CLOSE_BROWSER) {
 			killDriver();
 		}

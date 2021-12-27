@@ -11,13 +11,8 @@ import br.com.thiago1bd2.tests.ResumoTest;
 import br.com.thiago1bd2.tests.SaldoTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ 
-	ContaTest.class, 
-	MovimentacaoTest.class, 
-	RemoverContaComMovimentacaoTest.class,
-	SaldoTest.class,
-	ResumoTest.class
-})
+@SuiteClasses({ ContaTest.class, MovimentacaoTest.class, RemoverContaComMovimentacaoTest.class, SaldoTest.class,
+		ResumoTest.class })
 public class SuiteGeral {
 
 }

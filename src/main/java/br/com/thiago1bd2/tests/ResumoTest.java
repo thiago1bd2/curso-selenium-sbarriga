@@ -1,6 +1,7 @@
 package br.com.thiago1bd2.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -12,21 +13,22 @@ import br.com.thiago1bd2.pages.ResumoPage;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ResumoTest extends BaseTest {
-	
+
 	private MenuPage menuPage = new MenuPage();
-	
+
 	@Test
 	public void test1removerMovimentacao() {
 		ResumoPage rPage = menuPage.acessarResumos();
 		rPage.removerMovimentacao();
-		
+
 		assertEquals("Movimentação removida com sucesso!", rPage.obterMensagemSucesso());
 	}
-	
+
 	@Test
 	public void test2ResumoMensal() {
-		ResumoPage rPage = menuPage.acessarResumos();		
-		assertEquals("Seu Barriga - Extrato", rPage.getPageTitle());
+		ResumoPage rPage = menuPage.acessarResumos();
+		assertTrue(rPage.hasElementosTabela());
+//		assertEquals("Seu Barriga - Extrato", rPage.getPageTitle());
 	}
 
 }

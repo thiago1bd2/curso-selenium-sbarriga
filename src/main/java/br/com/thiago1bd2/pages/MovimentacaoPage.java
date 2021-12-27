@@ -8,8 +8,12 @@ import br.com.thiago1bd2.core.BasePage;
 
 public class MovimentacaoPage extends BasePage {
 
-	public void setMovimentacao(String tipoMovimentacao) {
-		selecionarTextoVisivelCombo("tipo", tipoMovimentacao);
+	public void setMovimentacaoDespesa() {
+		selecionarTextoVisivelCombo("tipo", "Despesa");
+	}
+	
+	public void setMovimentacaoReceita() {
+		selecionarTextoVisivelCombo("tipo", "Receita");
 	}
 
 	public void setDataMovimentacao(String data) {
