@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.thiago1bd2.core.BaseTest;
-import br.com.thiago1bd2.core.Properties;
 import br.com.thiago1bd2.pages.ContasPage;
 import br.com.thiago1bd2.pages.ListarPage;
 import br.com.thiago1bd2.pages.MenuPage;
@@ -22,7 +21,7 @@ public class ContaTest extends BaseTest {
 	public void test1_adicionarConta() {
 		ContasPage contasPage = menuPage.adicionarConta();
 
-		contasPage.setNome(Properties.NOME_DA_CONTA);
+		contasPage.setNome("Conta do Teste");
 		contasPage.salvarConta();
 
 		assertEquals("Conta adicionada com sucesso!", contasPage.obterMensagemSucesso());
@@ -32,8 +31,8 @@ public class ContaTest extends BaseTest {
 	public void test2_editarConta() {
 		ListarPage listarPage = menuPage.listarConta();
 
-		ContasPage contasPage = listarPage.editarConta(Properties.NOME_DA_CONTA);
-		contasPage.setNome(Properties.NOME_DA_CONTA_ALTERADA);
+		ContasPage contasPage = listarPage.editarConta("Conta para alterar");
+		contasPage.setNome("Conta alterada");
 		contasPage.salvarConta();
 
 		assertEquals("Conta alterada com sucesso!", contasPage.obterMensagemSucesso());
@@ -43,7 +42,7 @@ public class ContaTest extends BaseTest {
 	public void test3_adicionarContaJaExistente() {
 		ContasPage contasPage = menuPage.adicionarConta();
 
-		contasPage.setNome(Properties.NOME_DA_CONTA_ALTERADA);
+		contasPage.setNome("Conta mesmo nome");
 		contasPage.salvarConta();
 
 		assertEquals("Já existe uma conta com esse nome!", contasPage.obterMensagemErro());

@@ -3,7 +3,6 @@ package br.com.thiago1bd2.pages;
 import org.openqa.selenium.By;
 
 import br.com.thiago1bd2.core.BasePage;
-import br.com.thiago1bd2.core.Properties;
 
 public class ContasPage extends BasePage {
 

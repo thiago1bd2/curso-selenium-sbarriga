@@ -27,6 +27,7 @@ public class ResumoTest extends BaseTest {
 	@Test
 	public void test2ResumoMensal() {
 		ResumoPage rPage = menuPage.acessarResumos();
+		rPage.setAnoPesquisa("2010");
 		assertTrue(rPage.hasElementosTabela());
 //		assertEquals("Seu Barriga - Extrato", rPage.getPageTitle());
 	}

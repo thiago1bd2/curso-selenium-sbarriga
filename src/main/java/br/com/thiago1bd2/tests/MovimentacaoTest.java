@@ -13,7 +13,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.thiago1bd2.core.BaseTest;
-import br.com.thiago1bd2.core.Properties;
 import br.com.thiago1bd2.pages.MenuPage;
 import br.com.thiago1bd2.pages.MovimentacaoPage;
 
@@ -28,10 +27,10 @@ public class MovimentacaoTest extends BaseTest {
 		movimentacaoPage.setMovimentacaoReceita();
 		movimentacaoPage.setDataMovimentacao(getDataFormatada(getDataDiferencaEmDias(0)));
 		movimentacaoPage.setDataPagamento(getDataFormatada(getDataDiferencaEmDias(30)));
-		movimentacaoPage.setDescricao("Movimentação "+getDataHora());
+		movimentacaoPage.setDescricao("Movimentação " + getDataHora());
 		movimentacaoPage.setInteressado("Selenium Teste");
-		movimentacaoPage.setValor(Properties.VALOR_MOVIMENTACAO);
-		movimentacaoPage.setConta(Properties.NOME_DA_CONTA_ALTERADA);
+		movimentacaoPage.setValor("500");
+		movimentacaoPage.setConta("Conta para movimentacoes");
 		movimentacaoPage.setSituacaoPago();
 		movimentacaoPage.salvar();
 	}
@@ -46,17 +45,17 @@ public class MovimentacaoTest extends BaseTest {
 				"Data do pagamento é obrigatório", "Descrição é obrigatório", "Interessado é obrigatório",
 				"Valor é obrigatório", "Valor deve ser um número")));
 	}
-	
+
 	@Test
 	public void test3validaErroSeMovimentacaoFutura() {
 		MovimentacaoPage movimentacaoPage = menuPage.adicionarMovimentacao();
-		
+
 		movimentacaoPage.setDataMovimentacao(getDataFormatada(getDataDiferencaEmDias(1)));
-		
+
 		movimentacaoPage.salvar();
-		
+
 		List<String> erros = movimentacaoPage.obterErros();
-		
+
 		assertTrue(erros.contains("Data da Movimentação deve ser menor ou igual à data atual"));
 	}
 

@@ -22,5 +22,14 @@ public class ResumoPage extends BasePage {
 
 		return tabelaPossuiElementos("tabelaExtrato");
 	}
+	
+	public void setAnoPesquisa(String ano) {
+		selecionarTextoVisivelCombo("ano", ano);
+		pesquisar();
+	}
+	
+	public void pesquisar() {
+		clicarElemento("//input[@value='Buscar']");
+	}
 
 }
