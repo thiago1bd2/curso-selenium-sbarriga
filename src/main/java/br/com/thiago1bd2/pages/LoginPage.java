@@ -23,5 +23,9 @@ public class LoginPage extends BasePage {
 	public void logar() {
 		clicarElemento(By.xpath("//button[.='Entrar']"));
 	}
+	
+	public void resetar() {
+		clicarElemento(By.linkText("reset"));
+	}
 
 }

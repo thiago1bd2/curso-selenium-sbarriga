@@ -2,9 +2,7 @@ package br.com.thiago1bd2.tests;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import br.com.thiago1bd2.core.BaseTest;
 import br.com.thiago1bd2.pages.ContasPage;
@@ -12,7 +10,6 @@ import br.com.thiago1bd2.pages.ListarPage;
 import br.com.thiago1bd2.pages.MenuPage;
 
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ContaTest extends BaseTest {
 
 	MenuPage menuPage = new MenuPage();
