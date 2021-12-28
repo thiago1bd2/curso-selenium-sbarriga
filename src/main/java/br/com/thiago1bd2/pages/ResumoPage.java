@@ -24,12 +24,11 @@ public class ResumoPage extends BasePage {
 	}
 	
 	public void setAnoPesquisa(String ano) {
-		selecionarTextoVisivelCombo("ano", ano);
-		pesquisar();
+		selecionarTextoVisivelCombo("ano", ano);		
 	}
 	
 	public void pesquisar() {
-		clicarElemento("//input[@value='Buscar']");
+		clicarElemento(By.xpath("//form/input"));
 	}
 
 }

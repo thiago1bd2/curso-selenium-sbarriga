@@ -16,7 +16,7 @@ public class ResumoTest extends BaseTest {
 
 	private MenuPage menuPage = new MenuPage();
 
-	@Test
+//	@Test
 	public void test1removerMovimentacao() {
 		ResumoPage rPage = menuPage.acessarResumos();
 		rPage.removerMovimentacao();
@@ -28,6 +28,8 @@ public class ResumoTest extends BaseTest {
 	public void test2ResumoMensal() {
 		ResumoPage rPage = menuPage.acessarResumos();
 		rPage.setAnoPesquisa("2010");
+		rPage.pesquisar();
+		
 		assertTrue(rPage.hasElementosTabela());
 //		assertEquals("Seu Barriga - Extrato", rPage.getPageTitle());
 	}
