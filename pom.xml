@@ -16,7 +16,7 @@
 				<configuration>
 					<includes>br/com/thiago1bd2/suites/*.java</includes>
 					<parallel>all</parallel>
-					<threadCount>4</threadCount>
+					<threadCount>3</threadCount>
 				</configuration>
 			</plugin>
 		</plugins>
